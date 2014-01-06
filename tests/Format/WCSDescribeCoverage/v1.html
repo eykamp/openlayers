@@ -46,8 +46,8 @@
         t.eq(metadata.supportedCRSs.length, 4, "correct number of supported CRSs");
         t.eq(metadata.supportedCRSs[3], "EPSG:4326", "correct value for selected supported CRS");
 
-        t.eq(metadata.supportedFormats.length, 1, "correct number of supported formats");
-        t.eq(metadata.supportedFormats[0], "GTiff", "correct value for supported format");
+        t.eq(metadata.supportedFormat.length, 1, "correct number of supported formats");
+        t.eq(metadata.supportedFormat[0], "GTiff", "correct value for supported format");
 
         var lonLatEnvelope = metadata.lonLatEnvelope;
 
@@ -101,8 +101,8 @@
         t.eq(metadata.abstract, "Digital Surface Model (DSM) raster data set of inner city Rotterdam", "correct abstract");
         t.eq(metadata.supportedCRSs.length, 4, "correct number of supported CRSs");
         t.eq(metadata.supportedCRSs[3], "urn:ogc:def:crs:EPSG::4326", "correct value for first supported CRS");
-        t.eq(metadata.supportedFormats.length, 1, "correct number of supported formats");
-        t.eq(metadata.supportedFormats[0], "image/tiff", "correct value for first supported format");
+        t.eq(metadata.supportedFormat.length, 1, "correct number of supported formats");
+        t.eq(metadata.supportedFormat[0], "image/tiff", "correct value for first supported format");
 
         var gridCRS = metadata.domain.spatialDomain.gridCRS;
         t.eq(gridCRS.gridBaseCRS, "urn:ogc:def:crs:EPSG::28992", "correct gridBaseCRS");
@@ -122,16 +122,16 @@
         t.eq(nativeBB.left,   91979,    "correct native bounding box left value");
         t.eq(nativeBB.right,  92617,    "correct native bounding box right value");
 
-        t.eq(metadata.supportedFormats.length, 1, "correct number of supported formats");
-        t.eq(metadata.supportedFormats[0], "image/tiff", "correct initial supported format value");
+        t.eq(metadata.supportedFormat.length, 1, "correct number of supported formats");
+        t.eq(metadata.supportedFormat[0], "image/tiff", "correct initial supported format value");
 
         // Check consistency between 1.0.0 and 1.1.0
         t.eq(res1_0_0.coverageDescriptions.ro_dsm.identifier, res1_1_0.coverageDescriptions.ro_dsm.identifier, "1.0.0 and 1.1.0 have same identifier");
         t.eq(res1_0_0.coverageDescriptions.ro_dsm.title, res1_1_0.coverageDescriptions.ro_dsm.title, "1.0.0 and 1.1.0 have same title");
         // Actual supported formats will be expressed differently (image/tiff v GTiff), so we can't easily compare directly
-        t.eq(res1_0_0.coverageDescriptions.ro_dsm.supportedFormats.length, 
-             res1_1_0.coverageDescriptions.ro_dsm.supportedFormats.length, 
-             "1.0.0 and 1.1.0 have same supportedFormats.length");
+        t.eq(res1_0_0.coverageDescriptions.ro_dsm.supportedFormat.length, 
+             res1_1_0.coverageDescriptions.ro_dsm.supportedFormat.length, 
+             "1.0.0 and 1.1.0 have same supportedFormat.length");
 
         // Use substr here to account for differing CRS formats
         t.eq(res1_0_0.coverageDescriptions.ro_dsm.nativeCRS.substr(-5),    // EPSG:28992
